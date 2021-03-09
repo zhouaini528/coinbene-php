@@ -28,7 +28,6 @@ $coinbene->setOptions([
     //'verify'=>false,
 ]);
 
-//Account
 try {
     $result=$coinbene->privates()->getAccount();
     print_r($result);

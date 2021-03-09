@@ -27,7 +27,6 @@ $coinbene->setOptions([
 ]);
 
 //Instruments
-
 try {
     $result=$coinbene->publics()->getTradePairList();
     print_r($result);

@@ -1,5 +1,5 @@
 <?php
-namespace Lin\Bigone\Exceptions;
+namespace Lin\Coinbene\Exceptions;
 
 class Exception extends \Exception
 {

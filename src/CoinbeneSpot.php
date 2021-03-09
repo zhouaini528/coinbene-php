@@ -3,13 +3,13 @@
  * @author lin <465382251@qq.com>
  * */
 
-namespace Lin\Bigone;
+namespace Lin\Coinbene;
 
-use Lin\Bigone\Api\Spot\Privates;
-use Lin\Bigone\Api\Spot\Publics;
+use Lin\Coinbene\Api\SpotV3\Privates;
+use Lin\Coinbene\Api\SpotV3\Publics;
 
 
-class BigoneSpot
+class CoinbeneSpot
 {
     protected $key;
     protected $secret;
@@ -17,7 +17,7 @@ class BigoneSpot
 
     protected $options=[];
 
-    function __construct(string $key='',string $secret='',string $host='https://big.one'){
+    function __construct(string $key='',string $secret='',string $host='https://openapi-exchange.coinbene.com'){
         $this->key=$key;
         $this->secret=$secret;
         $this->host=$host;

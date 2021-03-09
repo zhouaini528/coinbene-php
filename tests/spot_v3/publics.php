@@ -3,14 +3,14 @@
  * @author lin <465382251@qq.com>
  * */
 
-use Lin\Bigone\BigoneSpot;
+use Lin\Coinbene\CoinbeneSpot;
 
 require __DIR__ .'../../../vendor/autoload.php';
 
-$bigone=new BigoneSpot();
+$coinbene=new CoinbeneSpot();
 
 //You can set special needs
-$bigone->setOptions([
+$coinbene->setOptions([
     //Set the request timeout to 60 seconds by default
     'timeout'=>10,
 
@@ -26,16 +26,19 @@ $bigone->setOptions([
     //'verify'=>false,
 ]);
 
-try {
-    $result=$bigone->publics()->ping();
+//Instruments
+
+/*try {
+    $result=$coinbene->publics()->getTradePairList();
     print_r($result);
 }catch (\Exception $e){
     print_r(json_decode($e->getMessage(),true));
-}
+}*/
+
 
 try {
-    $result=$bigone->publics()->ticker([
-        'asset_pair_name'=>'BTC-USDT'
+    $result=$coinbene->publics()->getTradePairOne([
+        'instrument_id'=>'BTC/USDT'
     ]);
     print_r($result);
 }catch (\Exception $e){
@@ -43,30 +46,28 @@ try {
 }
 
 try {
-    $result=$bigone->publics()->depth([
-        'asset_pair_name'=>'BTC-USDT'
+    $result=$coinbene->publics()->getDepth([
+        'instrument_id'=>'BTC/USDT',
+        'depth'=>5
     ]);
     print_r($result);
 }catch (\Exception $e){
     print_r(json_decode($e->getMessage(),true));
 }
 
+
 try {
-    $result=$bigone->publics()->trades([
-        'asset_pair_name'=>'BTC-USDT'
-    ]);
+    $result=$coinbene->publics()->getTickerList();
     print_r($result);
 }catch (\Exception $e){
     print_r(json_decode($e->getMessage(),true));
 }
 
 try {
-    $result=$bigone->publics()->candles([
-        'asset_pair_name'=>'BTC-USDT',
-        'period'=>'day1'
+    $result=$coinbene->publics()->getTickerOne([
+        'instrument_id'=>'BTC/USDT',
     ]);
     print_r($result);
 }catch (\Exception $e){
     print_r(json_decode($e->getMessage(),true));
 }
-?>

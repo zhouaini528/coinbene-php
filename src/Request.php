@@ -3,10 +3,10 @@
  * @author lin <465382251@qq.com>
  * */
 
-namespace Lin\Bigone;
+namespace Lin\Coinbene;
 
 use GuzzleHttp\Exception\RequestException;
-use Lin\Bigone\Exceptions\Exception;
+use Lin\Coinbene\Exceptions\Exception;
 
 class Request
 {
@@ -58,30 +58,22 @@ class Request
      *
      * */
     protected function nonce(){
-        $mt = explode(' ', microtime());
-        $this->nonce = $mt[1].substr($mt[0], 2, 6).'000';
+        $this->nonce = date("Y-m-d\TH:i:s"). substr((string)microtime(), 1, 4) . 'Z';
     }
 
     /**
      *
      * */
     protected function signature(){
-        $header=[
-            'alg'=>'HS256',
-            'typ'=>'JWT',
-        ];
+        $path=$this->path;
+        if (strtoupper($this->type) == 'GET') {
+            $path .= $this->data ? '?'.http_build_query($this->data) : '';
+        }else{
+            $body = $this->data ? json_encode($this->data) : '';
+        }
 
-        $payload=[
-            'type'=>'OpenAPIV2',
-            'sub'=>$this->key,
-            'nonce'=>$this->nonce
-        ];
-
-        $h=base64_encode(json_encode($header));
-        $p=base64_encode(json_encode($payload));
-
-        $sha256 = base64_encode(hash_hmac('sha256', $h.'.'.$p, $this->secret,true));
-        $this->signature = $h.'.'.$p .'.'.$sha256;
+        $message = $this->nonce.strtoupper($this->type).$path.($body ?? '');
+        $this->signature= hash_hmac('sha256', $message, $this->secret, false);
     }
 
     /**
@@ -90,9 +82,10 @@ class Request
     protected function headers(){
         $this->headers= [
             'Content-Type'=>'application/json',
+            "ACCESS-KEY"=>$this->key,
+            "ACCESS-SIGN"=>$this->signature,
+            "ACCESS-TIMESTAMP"=>$this->nonce,
         ];
-
-        if($this->authorization) $this->headers['Authorization']=' Bearer '.$this->signature;
     }
 
     /**
@@ -123,8 +116,10 @@ class Request
 
         if($this->type=='GET') $url.= empty($this->data) ? '' : '?'.http_build_query($this->data);
         else $this->options['body']=json_encode($this->data);
+
         /*echo $url.PHP_EOL;
-        print_r($this->options);*/
+        print_r($this->options);
+        die;*/
         $response = $client->request($this->type, $url, $this->options);
 
         return $response->getBody()->getContents();

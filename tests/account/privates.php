@@ -3,11 +3,13 @@
  * @author lin <465382251@qq.com>
  * */
 
-use Lin\Coinbene\CoinbeneSpot;
+use Lin\Coinbene\CoinbeneAccount;
 
 require __DIR__ .'../../../vendor/autoload.php';
 
-$coinbene=new CoinbeneSpot();
+include 'key_secret.php';
+
+$coinbene=new CoinbeneAccount($key,$secret);
 
 //You can set special needs
 $coinbene->setOptions([
@@ -26,29 +28,13 @@ $coinbene->setOptions([
     //'verify'=>false,
 ]);
 
-//Instruments
-
 try {
-    $result=$coinbene->publics()->getTradePairList();
-    print_r($result);
-}catch (\Exception $e){
-    print_r(json_decode($e->getMessage(),true));
-}
-
-
-try {
-    $result=$coinbene->publics()->getTradePairOne([
-        'instrument_id'=>'BTC/USDT'
-    ]);
-    print_r($result);
-}catch (\Exception $e){
-    print_r(json_decode($e->getMessage(),true));
-}
-
-try {
-    $result=$coinbene->publics()->getDepth([
-        'instrument_id'=>'BTC/USDT',
-        'depth'=>5
+    $result=$coinbene->privates()->postWithdrawApply([
+        'asset'=>'BTC',
+        'amount'=>'1',
+        'address'=>'xxxxxxxxxxxx',
+        //'addressTag'=>'',
+        //'chain'=>'',
     ]);
     print_r($result);
 }catch (\Exception $e){
@@ -56,16 +42,21 @@ try {
 }
 
 
+
 try {
-    $result=$coinbene->publics()->getTickerList();
+    $result=$coinbene->privates()->getDepositAddressList([
+        'asset'=>'BTC',
+    ]);
     print_r($result);
 }catch (\Exception $e){
     print_r(json_decode($e->getMessage(),true));
 }
 
 try {
-    $result=$coinbene->publics()->getTickerOne([
-        'instrument_id'=>'BTC/USDT',
+    $result=$coinbene->privates()->getAssetTransferHistoryList([
+        'asset'=>'BTC',
+        'from'=>'spot',
+        //'to'=>'spot',
     ]);
     print_r($result);
 }catch (\Exception $e){

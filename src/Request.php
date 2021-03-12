@@ -30,8 +30,6 @@ class Request
 
     protected $options=[];
 
-    protected $authorization=false;
-
     public function __construct(array $data)
     {
         $this->key=$data['key'] ?? '';

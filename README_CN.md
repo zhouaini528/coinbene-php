@@ -10,7 +10,7 @@ Coinbene 文档 [https://github.com/Coinbene](https://github.com/Coinbene)
 
 QQ交流群：668421169
 
-### Other exchanges API
+### 其他交易所API
 
 [Exchanges](https://github.com/zhouaini528/exchanges-php) 它包含以下所有交易所，强烈推荐使用该SDK。
 
@@ -22,7 +22,7 @@ QQ交流群：668421169
 
 [Binance](https://github.com/zhouaini528/binance-php) 支持[Websocket](https://github.com/zhouaini528/binance-php/blob/master/README_CN.md#Websocket)
 
-[Kucoin/Kumex](https://github.com/zhouaini528/kucoin-php)
+[Kucoin](https://github.com/zhouaini528/kucoin-php)
 
 [Mxc](https://github.com/zhouaini528/mxc-php)
 
@@ -36,15 +36,21 @@ QQ交流群：668421169
 
 [Kraken](https://github.com/zhouaini528/kraken-php)
 
-[Gate](https://github.com/zhouaini528/gate-php)   支持 V2/V4
+[Gate](https://github.com/zhouaini528/gate-php)   
 
 [Bigone](https://github.com/zhouaini528/bigone-php)   
 
 [Crex24](https://github.com/zhouaini528/crex24-php)   
 
-[Bybit](https://github.com/zhouaini528/bybit-php)   
+[Bybit](https://github.com/zhouaini528/bybit-php)  
 
-[Coinbene](https://github.com/zhouaini528/coinbene-php)   支持V3
+[Coinbene](https://github.com/zhouaini528/coinbene-php)   
+
+[Bitget](https://github.com/zhouaini528/bitget-php)   
+
+[Poloniex](https://github.com/zhouaini528/poloniex-php)
+
+**如果没有找到你想要的交易所SDK你可以告诉我，我来加入它们。**
 
 **如果没有找到你想要的交易所SDK你可以告诉我，我来加入它们。**
 

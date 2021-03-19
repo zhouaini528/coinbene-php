@@ -20,7 +20,7 @@ Most of the interface is now complete, and the user can continue to extend it ba
 
 [Binance](https://github.com/zhouaini528/binance-php) Support [Websocket](https://github.com/zhouaini528/binance-php/blob/master/README.md#Websocket)
 
-[Kucoin/Kumex](https://github.com/zhouaini528/kucoin-php)
+[Kucoin](https://github.com/zhouaini528/kucoin-php)
 
 [Mxc](https://github.com/zhouaini528/Mxc-php)
 
@@ -34,15 +34,19 @@ Most of the interface is now complete, and the user can continue to extend it ba
 
 [Kraken](https://github.com/zhouaini528/kraken-php)
 
-[Gate](https://github.com/zhouaini528/gate-php)   Support V2/V4
+[Gate](https://github.com/zhouaini528/gate-php)   
 
 [Bigone](https://github.com/zhouaini528/bigone-php)   
 
 [Crex24](https://github.com/zhouaini528/crex24-php)   
 
-[Bybit](https://github.com/zhouaini528/bybit-php)   
+[Bybit](https://github.com/zhouaini528/bybit-php)  
 
-[Coinbene](https://github.com/zhouaini528/coinbene-php)   Support V3
+[Coinbene](https://github.com/zhouaini528/coinbene-php)   
+
+[Bitget](https://github.com/zhouaini528/bitget-php)   
+
+[Poloniex](https://github.com/zhouaini528/poloniex-php)
 
 **If you don't find the exchange SDK you want, you can tell me and I'll join them.**
 
